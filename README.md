@@ -10,14 +10,18 @@ The IoT architecture for this project consists of the following components:
 
 <h3>Physical Devices:</h3>  
 
-Ultrasonic sensor for distance measurement
-Two potentiometers to simulate car speed control
-LCD Display to show both car speeds
-ESP32 Devkit V1 as the microcontroller
-Communication Protocol:
+* Ultrasonic sensor for distance measurement
+* Two potentiometers to simulate car speed control
+* LCD Display to show both car speeds
+* ESP32 Devkit V1 as the microcontroller
+<img src="https://i.imgur.com/Q0DWD6b.png"/>  
+<h3>Communication Protocol:</h3>
 
 The MQTT protocol is used for sending sensor data to a central server. MQTT is an efficient, lightweight protocol suitable for IoT devices with limited bandwidth.
 Fiware Platform:
+<div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGWJVn9EgMFSXLLpaoL_v59oHNyJnrUcJEjQ&s" width="300"/>
+</div>
 
 **Fiware** is used to manage real-time data flow, logging the car's information. Services include:
 * Mosquitto (MQTT Broker)
@@ -30,25 +34,26 @@ Two potentiometers simulate the speed of two cars. The values from these potenti
 <h3>Overtaking Logic</h3>
 The system checks for an overtaking scenario when one car’s speed is at least 30% greater than the other car's speed, and the distance between the cars is less than 400 cm. If these conditions are met, the overtaking event is logged.
 
-Data Flow
-The ESP32 collects speed and overtaking data and sends it to the Fiware platform using the MQTT protocol.
-The Orion Context Broker registers the devices and stores their states.
+<h3>Data Flow</h3>
+<p>The ESP32 collects speed and overtaking data and sends it to the Fiware platform using the MQTT protocol.</p>
+<p>The Orion Context Broker registers the devices and stores their states.</p>
 STH-Comet records historical speed and overtaking data in MongoDB, which can be visualized in Google Colab via graphs.
 Platform Setup
 Simulator - Wokwi
 The project uses the Wokwi simulator to test hardware interactions, such as sensor readings and potentiometer-based speed control.
 
 <h3>Fiware Setup</h3>
-IoT Agent MQTT: Handles MQTT communication between the ESP32 and Fiware.
-Orion Context Broker: Manages real-time data and device registration.
-STH-Comet: Stores historical data on MongoDB for future analysis.
-Instructions
-Wokwi Setup
+* IoT Agent MQTT: Handles MQTT communication between the ESP32 and Fiware.
+* Orion Context Broker: Manages real-time data and device registration.
+* STH-Comet: Stores historical data on MongoDB for future analysis.
+* Instructions
+<h3>Wowki Setup</h3>
 Load the ESP32 code into Wokwi.
 Simulate sensor and potentiometer interactions.
 Verify that speed and overtaking data is displayed on the LCD.
-Postman Collection
-In Postman, set up the following:  
+
+<h3>Postman Collection</h3>
+In Postman, the proyect has the following requisitions: 
 
 <h4>Folder 1: IoT Agent MQTT</h4>
 
@@ -75,7 +80,11 @@ In Postman, set up the following:
 3. Get
 4. Delete
 
-<h4>Visualizing Data in Google Colab</h4>  
-It's possible to acess the cars data in graphics format also, this is done by using a Python code hosted on Google Colab, here you can see the blocks to run for doing it:  
-* BLOCK 1: Generates speed graph for each car in Colab.  
-* BLOCK 2: Create bar charts to display overtakes.
+<h4>Visualizing data on Google Colab</h4>
+To display the speed charts of both cars as well as the number of overtakes made by each, you can run the two code blocks in Google Colab. The first block will show two speed curves, one for the first car and another for the second. The second block will display a bar chart with the number of overtakes made by car 1 and car 2.
+
+<h3>And then, how to create my own device?</h3>
+By modifying the id "fiware_carros_monitor" to the one of your preference in both the Wokwi simulator and the Postman Collection you can create your own device and collect your own data, not worrying about doing all the process of creating a fiware service on a cloud virtual machine, just change it in all the fields that id appears in and everything should work perfectly.
+
+<hr>
+This project is still in development, stay tuned for new updates and happy coding 😀!
