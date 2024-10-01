@@ -51,6 +51,7 @@ Postman Collection
 In Postman, set up the following:  
 
 <h4>Folder 1: IoT Agent MQTT</h4>
+
 1. Health Check
 2. Provisioning a Service Group for MQTT
 3. Provisioning Car Monitoring
@@ -74,6 +75,7 @@ In Postman, set up the following:
 3. Get
 4. Delete
 
-<h4>Visualizing Data in Google Colab</h4>
-Step 1: Generate speed graphs for each car in Colab.
-Step 2: Create bar charts to display overtakes.
+<h4>Visualizing Data in Google Colab</h4>  
+It's possible to acess the cars data in graphics format also, this is done by using a Python code hosted on Google Colab, here you can see the blocks to run for doing it:  
+* BLOCK 1: Generates speed graph for each car in Colab.  
+* BLOCK 2: Create bar charts to display overtakes.
